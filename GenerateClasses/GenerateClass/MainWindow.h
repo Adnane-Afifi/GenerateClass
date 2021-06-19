@@ -22,11 +22,10 @@ class MainWindow : public QWidget {
        QCheckBox * m_CHBX_multipleInclude;
        QCheckBox * m_CHBX_GenerateConstruct;
        QCheckBox * m_CHBX_GenerateDestruct;
-       QLabel * m_LAddComment;
-       QLabel * m_LAuthor;
-       QLabel * m_LDate;
-       QLabel * m_LroleOfClasse;
-       QTextEdit m_TeXroleofClasse;
+       QCheckBox * m_CHBX_GenerateComment;
+       QLineEdit * m_LIAuthor;
+       QDateEdit * m_Date;
+       QTextEdit * m_TeXroleofClasse;
        QPushButton m_BGenerate;
        QPushButton m_Bleave;
     public:
