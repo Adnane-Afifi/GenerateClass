@@ -3,9 +3,7 @@ HEADERS += \
     MainWindow.h
 
 SOURCES += \
-    GeneratedWindow.cpp \
-    Main.cpp \
-    MainWindow.cpp
+    GeneratedWindow.cpp
     MainWindow.cpp
 QT += widgets
 
