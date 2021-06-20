@@ -3,6 +3,7 @@
 #include <QtWidgets>
 #include <QAbstractButton>
 #include <QCheckBox>
+
 class MainWindow : public QWidget {
     /*
      Here i have used some convention :
@@ -26,8 +27,8 @@ class MainWindow : public QWidget {
        QLineEdit * m_LIAuthor;
        QDateEdit * m_Date;
        QTextEdit * m_TeXroleofClasse;
-       QPushButton m_BGenerate;
-       QPushButton m_Bleave;
+       QPushButton * m_BGenerate;
+       QPushButton *  m_Bleave;
     public:
        MainWindow();
        void printHelloWorld();
@@ -35,6 +36,11 @@ class MainWindow : public QWidget {
        void fixLayoutSection1();
        void fixLayoutSection2();
        void fixLayoutSection3();
+       void fixLayoutSection4();
+       QString getNameClass();
+       QString getNameMotherClass();
+
+
 
 
 
