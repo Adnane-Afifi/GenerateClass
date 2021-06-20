@@ -5,6 +5,7 @@
 #include <QCheckBox>
 
 class MainWindow : public QWidget {
+     Q_OBJECT
     /*
      Here i have used some convention :
      m_ : member to the class;
@@ -37,8 +38,21 @@ class MainWindow : public QWidget {
        void fixLayoutSection2();
        void fixLayoutSection3();
        void fixLayoutSection4();
-       QString getNameClass();
        QString getNameMotherClass();
+       QString getAuthorName();
+       QString getCreationDate();
+       QString getRoleOfTheClass();
+       QString getClassName();
+       void TEST2();
+       void TEST3();
+   public slots:
+        void TestQEditLine();
+        void TestCheckbox();
+
+
+
+
+
 
 
 

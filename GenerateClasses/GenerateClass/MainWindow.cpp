@@ -4,6 +4,8 @@
 #include <QGridLayout>
 #include <QtDebug>
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 MainWindow::MainWindow():QWidget(){
 fixSizeWindow();
 m_layoutPrincipal = new QVBoxLayout;
@@ -101,22 +103,47 @@ void MainWindow:: fixLayoutSection4(){
     m_fenetre.setLayout(m_layoutPrincipal);
 }
 
-QString MainWindow::getNameClass(){
-    return m_LINameClass->text();
+QString MainWindow::getClassName(){
+    return m_LINameClass->text().toStdString().c_str();
 }
 QString  MainWindow :: getNameMotherClass(){
     return m_LINameClass->text();
 }
 QString MainWindow::getAuthorName(){
-    return m_LIAuthor->text();
+    return m_LIAuthor->text().toStdString().c_str();
 }
 QString MainWindow::getCreationDate(){
-    return m_Date->text();
+    return m_Date->text().toStdString().c_str();
 }
 QString MainWindow::getRoleOfTheClass(){
 //TO-DO
 }
-//QString getNameClass(){
-//    qDebug()<<getNameClass();
-//    std::cout<<getNameClass().toStdString().c_str();
-//}
+
+//TESTING...
+void MainWindow::TestQEditLine(){
+    qDebug()<<getClassName();
+    std::cout<<"TEST::::::"<<getAuthorName().toStdString().c_str()<<'\n';
+}
+void MainWindow::TestCheckbox(){
+    if(m_CHBX_GenerateComment->isChecked()){
+       std::cout<<"The user need somme comment"<<std::endl;
+    }
+    if (m_CHBX_GenerateConstruct->isChecked()){
+       std::cout<<"The user need a constructeur "<<std::endl;
+    }
+    if(m_CHBX_GenerateDestruct->isChecked()){
+       std::cout<<"The user need a destructuer "<<std::endl;
+    }
+    if(m_CHBX_multipleInclude->isCheckable()){
+       std::cout<<"The user said do not include multiple times"<<std::endl;
+    }
+    else{
+        std::cout<<"The user need nothing . "<<std::endl;
+    }
+}
+void MainWindow::TEST2(){
+    QObject::connect(m_BGenerate,SIGNAL(clicked()),this,SLOT(TestQEditLine()));
+}
+void MainWindow::TEST3(){
+    QObject::connect(m_BGenerate,SIGNAL(clicked()),this,SLOT(TestCheckbox()));
+}
