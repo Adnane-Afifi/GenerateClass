@@ -32,6 +32,7 @@ class MainWindow : public QWidget {
        QPushButton *  m_Bleave;
     public:
        MainWindow();
+       QPushButton * getButtonGenerate();
        void printHelloWorld();
        void fixSizeWindow();
        void fixLayoutSection1();
@@ -39,15 +40,20 @@ class MainWindow : public QWidget {
        void fixLayoutSection3();
        void fixLayoutSection4();
        QString getNameMotherClass();
-       QString getAuthorName();
        QString getCreationDate();
        QString getRoleOfTheClass();
        QString getClassName();
+
        void TEST2();
        void TEST3();
+       void TEST4();
+       void TEST5();
    public slots:
+        QString getAuthorName();
         void TestQEditLine();
         void TestCheckbox();
+        void TestQdate();
+        void TestQTextEditLine();
 
 
 

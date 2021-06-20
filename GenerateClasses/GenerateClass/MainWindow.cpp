@@ -16,13 +16,27 @@ fixLayoutSection4();
 m_fenetre.show();
 }
 
+
+
+QPushButton * MainWindow::getButtonGenerate(){
+   return m_BGenerate;
+}
+
 void MainWindow:: printHelloWorld(){
     printf("Hello world ");
 }
+
+
+
+
+
 void MainWindow::fixSizeWindow(){
     m_fenetre.setFixedHeight(900);
     m_fenetre.setFixedWidth(600);
 }
+
+
+
 void MainWindow::fixLayoutSection1(){
     QGroupBox * groupDefinition = new QGroupBox("Definition de la classe :");
     groupDefinition->setFixedHeight(200);
@@ -45,6 +59,9 @@ void MainWindow::fixLayoutSection1(){
     m_fenetre.setLayout(m_layoutPrincipal);
 }
 
+
+
+
 void MainWindow::fixLayoutSection2(){
 QGroupBox * groupOptions = new QGroupBox("Options :");
 groupOptions->setFixedHeight(300);
@@ -65,6 +82,9 @@ m_layoutPrincipal->addWidget(groupOptions);
 m_fenetre.setLayout(m_layoutPrincipal);
 
 }
+
+
+
 void MainWindow::fixLayoutSection3(){
  QGroupBox * groupMoreOptions = new QGroupBox("Plus d'options:");
  QFormLayout *formLayoutSection3 = new QFormLayout;
@@ -119,10 +139,18 @@ QString MainWindow::getRoleOfTheClass(){
 //TO-DO
 }
 
-//TESTING...
+
+// ================ ================ ================ ================  ================  ================ TESTING...  ================ ================ ================ ================ ================ ================
+
 void MainWindow::TestQEditLine(){
     qDebug()<<getClassName();
     std::cout<<"TEST::::::"<<getAuthorName().toStdString().c_str()<<'\n';
+}
+void MainWindow::TestQdate(){
+    std::cout<<"TEST:::::::"<<getCreationDate().toStdString().c_str()<<'\n';
+}
+void MainWindow::TestQTextEditLine(){
+    std::cout<<"TEST:::::::"<<getAuthorName().toStdString().c_str()<<'\n';
 }
 void MainWindow::TestCheckbox(){
     if(m_CHBX_GenerateComment->isChecked()){
@@ -146,4 +174,10 @@ void MainWindow::TEST2(){
 }
 void MainWindow::TEST3(){
     QObject::connect(m_BGenerate,SIGNAL(clicked()),this,SLOT(TestCheckbox()));
+}
+void MainWindow::TEST4(){
+  QObject::connect(m_BGenerate,SIGNAL(clicked()),this,SLOT(TestQdate()));
+}
+void MainWindow::TEST5(){
+  QObject::connect(m_BGenerate,SIGNAL(clicked()),this,SLOT(TestQEditLine()));
 }
