@@ -10,6 +10,6 @@ QApplication app(argc,argv);
 //main->printHelloWorld();
 //main->display2();
 //main->TEST3();
-GeneratedWindow *main2  = new GeneratedWindow;
+MainWindow *main = new MainWindow;
 return  app.exec();
 }

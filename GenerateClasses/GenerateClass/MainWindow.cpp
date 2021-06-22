@@ -6,6 +6,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include "GeneratedWindow.h"
 MainWindow::MainWindow():QWidget(){
 fixSizeWindow();
 m_layoutPrincipal = new QVBoxLayout;
@@ -13,6 +14,7 @@ fixLayoutSection1();
 fixLayoutSection2();
 fixLayoutSection3();
 fixLayoutSection4();
+GenerateAllThecode();
 m_fenetre.show();
 }
 
@@ -135,10 +137,47 @@ QString MainWindow::getAuthorName(){
 QString MainWindow::getCreationDate(){
     return m_Date->text().toStdString().c_str();
 }
-QString MainWindow::getRoleOfTheClass(){
-//TO-DO
-}
 
+
+void MainWindow::GenerateSecondWindow(){
+    QString  code;
+    if(!getAuthorName().isEmpty()){
+     code ="Auteur : "+getAuthorName()+"\n";
+    }
+    if(!getCreationDate().isEmpty()){
+      code+="Date de creation : "+getCreationDate()+"\n\n";
+    }
+
+    if(m_CHBX_GenerateComment->isChecked()){
+       code+="/* "+m_TeXroleofClasse->toPlainText()+" */"+"\n"+"\n"+"\n";
+    }
+    if(m_CHBX_multipleInclude->isChecked()){
+      code+="#ifndef HEADER_"+m_LINameClass->text().toUpper()+"\n";
+      code+="#define HEADER_"+m_LINameClass->text().toUpper()+"\n"+"\n"+"\n";
+    }
+    code+="Class "+m_LINameClass->text()+"\n";
+    code+="{  \n" ;
+    if(m_CHBX_GenerateConstruct->isChecked()){
+        code+="public: \n";
+        code+="\t"+m_LINameClass->text()+"() \n";
+    }
+    if(m_CHBX_GenerateDestruct->isChecked()){
+        code+="\t ~"+m_LINameClass->text();+"() \n";
+    }
+    code+="\n \n protected :";
+    code+="\n \n private :";
+    code+="\n \n   }";
+
+
+
+
+
+    GeneratedWindow *secondWindow = new GeneratedWindow(code,this);
+
+}
+void MainWindow::GenerateAllThecode(){
+    QObject::connect(m_BGenerate,SIGNAL(clicked()),this,SLOT(GenerateSecondWindow()));
+}
 
 // ================ ================ ================ ================  ================  ================ TESTING...  ================ ================ ================ ================ ================ ================
 

@@ -4,13 +4,15 @@
 #include "MainWindow.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QApplication>
 
 
 
-GeneratedWindow::GeneratedWindow():QDialog(){
+GeneratedWindow::GeneratedWindow(QString &code ,QWidget * parent):QDialog(parent){
   fixLayoutMainSection();
   fixLayoutLastSection();
-  GenerateFileDotH();
+  m_contain->setPlainText(code);
+  CloseWindow();
   m_dialog.show();
 }
 
@@ -33,6 +35,9 @@ m_vLayout->addWidget(m_contain);
 m_dialog.setLayout(m_vLayout);
 
 }
+QTextEdit * GeneratedWindow::getContain(){
+    return m_contain;
+}
 
 
 
@@ -44,8 +49,8 @@ void GeneratedWindow ::fixLayoutLastSection(){
    m_vLayout->addWidget(m_leaveapp);
 
 }
-
-void GeneratedWindow::GenerateFileDotH(){
-  MainWindow window ;
-   QObject::connect((window.getButtonGenerate()),SIGNAL(clicked()),&window,SLOT(m_containt->setText(window.getAuthorName())));
+void GeneratedWindow::CloseWindow(){
+    QObject::connect(m_leaveapp,SIGNAL(clicked()),qApp,SLOT(quit()));
 }
+
+

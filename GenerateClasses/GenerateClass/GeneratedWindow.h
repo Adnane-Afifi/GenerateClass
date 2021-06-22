@@ -2,7 +2,7 @@
 #define GENERATEDWINDOW_H
 #include <QDialog>
 #include <QtWidgets>
-class GeneratedWindow : public QDialog {
+ class GeneratedWindow : public QDialog {
      Q_OBJECT
 private:
     QVBoxLayout * m_vLayout ;
@@ -10,12 +10,12 @@ private:
     QTextEdit  * m_contain;
     QPushButton * m_leaveapp;
 public:
-    GeneratedWindow();
+    GeneratedWindow(QString &code , QWidget * parent=0);
     void DisplayName();
     void fixLayoutMainSection();
     void fixLayoutLastSection();
-    void GenerateFileDotH();
-
+    QTextEdit * getContain();
+    void CloseWindow();
 
 };
 #endif // GENERATEDWINDOW_H

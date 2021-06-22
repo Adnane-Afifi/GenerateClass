@@ -3,6 +3,7 @@
 #include <QtWidgets>
 #include <QAbstractButton>
 #include <QCheckBox>
+#include "GeneratedWindow.h"
 
 class MainWindow : public QWidget {
      Q_OBJECT
@@ -30,6 +31,8 @@ class MainWindow : public QWidget {
        QTextEdit * m_TeXroleofClasse;
        QPushButton * m_BGenerate;
        QPushButton *  m_Bleave;
+       QString  T_Author;
+       QString  T_NameClasse;
     public:
        MainWindow();
        QPushButton * getButtonGenerate();
@@ -43,25 +46,21 @@ class MainWindow : public QWidget {
        QString getCreationDate();
        QString getRoleOfTheClass();
        QString getClassName();
-
+       QString getINFOauthorName();
+       QString getAuthorName();
+       void GenerateAllThecode();
+       void CloseWindow();
        void TEST2();
        void TEST3();
        void TEST4();
        void TEST5();
    public slots:
-        QString getAuthorName();
         void TestQEditLine();
         void TestCheckbox();
         void TestQdate();
         void TestQTextEditLine();
 
-
-
-
-
-
-
-
+        void GenerateSecondWindow();
 
 
 };
