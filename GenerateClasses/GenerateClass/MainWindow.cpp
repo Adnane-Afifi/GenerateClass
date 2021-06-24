@@ -13,8 +13,11 @@ m_layoutPrincipal = new QVBoxLayout;
 fixLayoutSection1();
 fixLayoutSection2();
 fixLayoutSection3();
+fixLayoutSection5();
 fixLayoutSection4();
 GenerateAllThecode();
+//GenerateHeaders();
+CloseWindow();
 m_fenetre.show();
 }
 
@@ -33,8 +36,8 @@ void MainWindow:: printHelloWorld(){
 
 
 void MainWindow::fixSizeWindow(){
-    m_fenetre.setFixedHeight(900);
-    m_fenetre.setFixedWidth(600);
+    m_fenetre.setFixedHeight(950);
+    m_fenetre.setFixedWidth(700);
 }
 
 
@@ -125,6 +128,33 @@ void MainWindow:: fixLayoutSection4(){
     m_fenetre.setLayout(m_layoutPrincipal);
 }
 
+void MainWindow::fixLayoutSection5(){
+    QGroupBox *groupButton = new QGroupBox("Choisir les inclusions :");
+    QVBoxLayout *horizontalLayout = new QVBoxLayout;
+    m_LIST_HeaderInclude = new QComboBox;
+    m_LIST_HeaderInclude->addItem("iostream");
+    m_LIST_HeaderInclude->addItem("string.h");
+    m_LIST_HeaderInclude->addItem("cctype");
+    m_LIST_HeaderInclude->addItem("vector");
+    m_LIST_HeaderInclude->addItem("array");
+    m_LIST_HeaderInclude->addItem("map");
+
+    m_IncludeHeader = new QPushButton;
+    m_IncludeHeader->setText("Inclure");
+    m_IncludeHeader->setFixedWidth(100);
+
+
+
+
+
+
+
+    horizontalLayout->addWidget(m_LIST_HeaderInclude);
+    horizontalLayout->addWidget(m_IncludeHeader,Qt::AlignCenter);
+    groupButton->setLayout(horizontalLayout);
+    m_layoutPrincipal->addWidget(groupButton);
+}
+
 QString MainWindow::getClassName(){
     return m_LINameClass->text().toStdString().c_str();
 }
@@ -138,11 +168,10 @@ QString MainWindow::getCreationDate(){
     return m_Date->text().toStdString().c_str();
 }
 
-
 void MainWindow::GenerateSecondWindow(){
-    QString  code;
+     QString  code;
     if(!getAuthorName().isEmpty()){
-     code ="Auteur : "+getAuthorName()+"\n";
+     code +="Auteur : "+getAuthorName()+"\n";
     }
     if(!getCreationDate().isEmpty()){
       code+="Date de creation : "+getCreationDate()+"\n\n";
@@ -155,7 +184,7 @@ void MainWindow::GenerateSecondWindow(){
       code+="#ifndef HEADER_"+m_LINameClass->text().toUpper()+"\n";
       code+="#define HEADER_"+m_LINameClass->text().toUpper()+"\n"+"\n"+"\n";
     }
-    code+="Class "+m_LINameClass->text()+"\n";
+    code+=m_LImotherClass->text()==""?"Class "+m_LINameClass->text()+"\n":"Class " +m_LINameClass->text()+" : public " +m_LImotherClass->text()+"\n";
     code+="{  \n" ;
     if(m_CHBX_GenerateConstruct->isChecked()){
         code+="public: \n";
@@ -168,12 +197,19 @@ void MainWindow::GenerateSecondWindow(){
     code+="\n \n private :";
     code+="\n \n   }";
 
-
-
-
-
     GeneratedWindow *secondWindow = new GeneratedWindow(code,this);
 
+}
+//void MainWindow::GenerateHeaders(){
+//     QObject::connect(m_IncludeHeader,SIGNAL(clicked()),this,SLOT(setHeader()));
+//}
+//void MainWindow::setHeader(){
+//   code +=m_LIST_HeaderInclude->currentText().toStdString().c_str();
+//}
+
+
+void MainWindow:: CloseWindow(){
+    QObject::connect(m_Bleave,SIGNAL(clicked()),qApp,SLOT(quit()));
 }
 void MainWindow::GenerateAllThecode(){
     QObject::connect(m_BGenerate,SIGNAL(clicked()),this,SLOT(GenerateSecondWindow()));

@@ -26,6 +26,8 @@ class MainWindow : public QWidget {
        QCheckBox * m_CHBX_GenerateConstruct;
        QCheckBox * m_CHBX_GenerateDestruct;
        QCheckBox * m_CHBX_GenerateComment;
+       QComboBox *m_LIST_HeaderInclude;
+       QPushButton * m_IncludeHeader;
        QLineEdit * m_LIAuthor;
        QDateEdit * m_Date;
        QTextEdit * m_TeXroleofClasse;
@@ -33,6 +35,8 @@ class MainWindow : public QWidget {
        QPushButton *  m_Bleave;
        QString  T_Author;
        QString  T_NameClasse;
+
+
     public:
        MainWindow();
        QPushButton * getButtonGenerate();
@@ -41,6 +45,7 @@ class MainWindow : public QWidget {
        void fixLayoutSection1();
        void fixLayoutSection2();
        void fixLayoutSection3();
+       void fixLayoutSection5();
        void fixLayoutSection4();
        QString getNameMotherClass();
        QString getCreationDate();
@@ -50,6 +55,8 @@ class MainWindow : public QWidget {
        QString getAuthorName();
        void GenerateAllThecode();
        void CloseWindow();
+//       void GenerateHeaders();
+
        void TEST2();
        void TEST3();
        void TEST4();
@@ -61,6 +68,7 @@ class MainWindow : public QWidget {
         void TestQTextEditLine();
 
         void GenerateSecondWindow();
+//        void setHeader();
 
 
 };
