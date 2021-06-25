@@ -6,6 +6,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <QTranslator>
 #include "GeneratedWindow.h"
 MainWindow::MainWindow():QWidget(){
 fixSizeWindow();
@@ -43,7 +44,7 @@ void MainWindow::fixSizeWindow(){
 
 
 void MainWindow::fixLayoutSection1(){
-    QGroupBox * groupDefinition = new QGroupBox("Definition de la classe :");
+    QGroupBox * groupDefinition = new QGroupBox(tr("Definition de la classe :"));
     groupDefinition->setFixedHeight(200);
 
 
@@ -68,14 +69,14 @@ void MainWindow::fixLayoutSection1(){
 
 
 void MainWindow::fixLayoutSection2(){
-QGroupBox * groupOptions = new QGroupBox("Options :");
+QGroupBox * groupOptions = new QGroupBox(tr("Options :"));
 groupOptions->setFixedHeight(300);
 
 QVBoxLayout *vboxLayout = new QVBoxLayout;
-m_CHBX_multipleInclude = new QCheckBox("Protoger le header contre les inclusion multiples",&m_fenetre);
-m_CHBX_GenerateConstruct = new QCheckBox("Generer un constructeur par defaut ",&m_fenetre);
-m_CHBX_GenerateDestruct = new QCheckBox("Generer un destructeur",&m_fenetre);
-m_CHBX_GenerateComment = new QCheckBox("Ajouter des commentaires",&m_fenetre);
+m_CHBX_multipleInclude = new QCheckBox(tr("Protoger le header contre les inclusion multiples"),&m_fenetre);
+m_CHBX_GenerateConstruct = new QCheckBox(tr("Generer un constructeur par defaut "),&m_fenetre);
+m_CHBX_GenerateDestruct = new QCheckBox(tr("Generer un destructeur"),&m_fenetre);
+m_CHBX_GenerateComment = new QCheckBox(tr("Ajouter des commentaires"),&m_fenetre);
 
 vboxLayout->addWidget(m_CHBX_multipleInclude);
 vboxLayout->addWidget(m_CHBX_GenerateConstruct);
@@ -91,7 +92,7 @@ m_fenetre.setLayout(m_layoutPrincipal);
 
 
 void MainWindow::fixLayoutSection3(){
- QGroupBox * groupMoreOptions = new QGroupBox("Plus d'options:");
+ QGroupBox * groupMoreOptions = new QGroupBox(tr("Plus d'options:"));
  QFormLayout *formLayoutSection3 = new QFormLayout;
 
  m_LIAuthor = new QLineEdit;
@@ -115,9 +116,9 @@ void MainWindow:: fixLayoutSection4(){
     QGroupBox *groupButton = new QGroupBox;
     QHBoxLayout *horizontalLayout = new QHBoxLayout;
     m_BGenerate = new QPushButton;
-    m_BGenerate->setText("Generate");
+    m_BGenerate->setText(tr("Generate"));
     m_Bleave = new QPushButton;
-    m_Bleave->setText("Quitter");
+    m_Bleave->setText(tr("Quitter"));
 
 
     horizontalLayout->addWidget(m_BGenerate);
@@ -129,7 +130,7 @@ void MainWindow:: fixLayoutSection4(){
 }
 
 void MainWindow::fixLayoutSection5(){
-    QGroupBox *groupButton = new QGroupBox("Choisir les inclusions :");
+    QGroupBox *groupButton = new QGroupBox(tr("Choisir les inclusions :"));
     QVBoxLayout *horizontalLayout = new QVBoxLayout;
     m_LIST_HeaderInclude = new QComboBox;
     m_LIST_HeaderInclude->addItem("iostream");

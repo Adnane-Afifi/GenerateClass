@@ -7,5 +7,6 @@ SOURCES += \
     Main.cpp \
     MainWindow.cpp
     MainWindow.cpp
+    TRANSLATIONS =GeneratedWindow_en.ts
 QT += widgets
 
